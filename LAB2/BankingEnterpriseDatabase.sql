@@ -1,88 +1,70 @@
-create table branch
-( 
- branchname varchar2(25),
- branchcity varchar2(25),
- assests number(8,2),
- primary key(branchname)
- );
- 
- create table account
- (
-  accno int,
-  branchname varchar2(25),
-  balance real,
-  primary key(accno),
-  foreign key (branchname) references branch (branchname)
-  );
-   create table customer
-   (
-    customername varchar(50),
-    customerstreet varchar(25),
-    city varchar(25),
-    primary key( customername)
-    );
-    create table depositer
-  (
-   customername varchar2(50),
-    accno number(8,2),
-   primary key( customername,accno),
-     foreign key (accno) references account (accno),
-     foreign key (customername) references customer (customername)
-   );
-  
-    
-   
-     create table borrower
-    (.
-      customername varchar2(50),
-       loannumber number(10,2),
-       primary key(customername, loannumber),
-    foreign key (customername) references customer(customername)
-    
+create table branch( branchname varchar(10),branchcity varchar(20),assets real, primary key(branchname));
+desc branch
 
-    );
-   create table loan
-   (
-    loannumber int,
-    branchname varchar2(50),
-    amount real,
-    primary key(loannumber),
-    foreign key (branchname) references branch (branchname)
-    );
+create table bankaccount( accno int,branchname varchar(30),balance real, primary key(accno),foreign key(branchname) references branch(branchname));
+desc bankaccount
 
- 
+create table bankcustomer( customername varchar(30),customerstreet varchar(30),customercity varchar(30), primary key(customername));
+desc bankcustomer
+
+create table depositer( customername varchar(30),accno int, primary key(customername,accno), foreign key(customername) references bankcustomer(customername),foreign key(accno) references bankaccount(accno));
+desc depositer
+
+create table loan(loannumber int,branchname varchar(30), amount real, primary key(loannumber), foreign key(branchname) references branch (branchname));
+desc loan
+
+alter table branch 
+modify branchname varchar (40);
+
+
+insert into branch values ('SBI_Chamrajpet' , 'Bangalore' , 50000) ;
+insert into branch values ('SBI_ResidencyRoad' , 'Bangalore' , 10000) ;
+insert into branch values ('SBI_ShivajiRoad' , 'Bombay' , 20000);
+insert into branch values ('SBI_par1imentRoad' , 'Delhi' , 10000);
+insert into branch values ('SBI_Jantarmantar' , 'Delhi' , 20000);
+
 select * from branch;
-select * from account;
-select * from customer;
-select * from depositer;
-select * from borrower;
+
+insert into loan values(2, 'SBI_ResidencyRoad' ,2000) ;
+insert into loan values(1, 'SBI_Chamrajpet' , 1000) ;
+insert into loan values(3, 'SBI_ShivajiRoad' ,3000) ;
+insert into loan values(4, 'SBI_par1imentRoad' ,4000) ;
+insert into loan values(5, 'SBI_Jantarmantar' ,5000) ;
+
 select * from loan;
-    
-insert into branch values('Vijaynagar','Bangalore',10000);
-insert into branch values('Hanumanthnagar','Bangalore',20000);
-insert into branch values('indiranagar','Bangalore',45000);
-insert into branch values('Kormangala','Bangalore',55000);    
-insert into branch values('chandra layout','Bangalore',65000);
-     
-     
-insert into account values(1111,'Vijaynagar',65000);
-UPDATE account
-SET balance=10000
-WHERE accno=1111;
-     
-insert into account values(2222,'Hanumanthnagar',20000);
-insert into account values(3333,'indiranagar',45000);
-insert into account values(4444,'Kormangala',55000);
-insert into account values(5555,'chandra layout',65000);
-         
-insert into customer values('Shashank','M.G Road','Bangalore');
-insert into customer values('John','Richmond road','Bangalore');
-insert into customer values('Snow','C.V Raman road','Bangalore');
-insert into customer values('Smith','Kuvempu road','Bangalore');
-insert into customer values('Himmler','Mall road','Bangalore');
-              
-insert into depositer values('Shashank',1111);
-insert into depositer values('John',2222);
-insert into depositer values('Snow',3333);
-insert into depositer values('Smith',4444);
-insert into depositer values('Himmler',5555);
+
+insert into bankaccount values(1, 'SBI_Chamrajpet' ,2000) ;
+insert into bankaccount values(2, 'SBI_ResidencyRoad' ,5000) ;
+insert into bankaccount values(3, 'SBI_ShivajiRoad' ,6000) ;
+insert into bankaccount values(4, 'SBI_par1imentRoad' ,9000) ;
+insert into bankaccount values(5, 'SBI_Jantarmantar' ,8000) ;
+insert into bankaccount values(6, 'SBI_ShivajiRoad' ,4000) ;
+
+insert into bankaccount values(8, 'SBI_ResidencyRoad' ,4000) ;
+insert into bankaccount values(9, 'SBI_par1imentRoad' ,3000) ;
+insert into bankaccount values(10, 'SBI_ResidencyRoad' ,5000) ;
+insert into bankaccount values(11, 'SBI_Jantarmantar' ,2000);
+select * from bankaccount;
+commit;
+DELETE FROM bankaccount;
+
+insert into bankcustomer values('Avinash', 'Bull_Temple_road' ,'Bangalore') ;
+insert into bankcustomer values('Dinesh', 'Bannergatta_road' ,'Bangalore') ;
+insert into bankcustomer values('Mohan', 'NationalCollege_road' ,'Bangalore') ;
+insert into bankcustomer values('Nikil', 'Akbar_road' ,'Delhi') ;
+insert into bankcustomer values('Ravi', 'Prithviraj_road' ,'Delhi') ;
+
+commit;
+select * from bankcustomer;
+
+insert into depositer values('Avinash', 1) ;
+insert into depositer values('Dinesh', 2) ;
+insert into depositer values('Nikil', 4) ;
+insert into depositer values('Ravi', 5) ;
+insert into depositer values('Avinash', 8) ;
+insert into depositer values('Nikil', 9) ;
+insert into depositer values('Dinesh', 10) ;
+insert into depositer values('Nikil', 11) ;
+
+commit;
+select * from depositer;  #SHASHANK
