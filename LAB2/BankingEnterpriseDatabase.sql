@@ -50,44 +50,39 @@ create table branch
     foreign key (branchname) references branch (branchname)
     );
 
-   
-
-
-   
-  
  
-    select * from branch;
-    select * from account;
-    select * from customer;
-    select * from depositer;
-    select * from borrower;
-    select * from loan;
+select * from branch;
+select * from account;
+select * from customer;
+select * from depositer;
+select * from borrower;
+select * from loan;
     
-    insert into branch values('Vijaynagar','Bangalore',10000);
-    insert into branch values('Hanumanthnagar','Bangalore',20000);
-    insert into branch values('indiranagar','Bangalore',45000);
-    insert into branch values('Kormangala','Bangalore',55000);    
-     insert into branch values('chandra layout','Bangalore',65000);
+insert into branch values('Vijaynagar','Bangalore',10000);
+insert into branch values('Hanumanthnagar','Bangalore',20000);
+insert into branch values('indiranagar','Bangalore',45000);
+insert into branch values('Kormangala','Bangalore',55000);    
+insert into branch values('chandra layout','Bangalore',65000);
      
      
-      insert into account values(1111,'Vijaynagar',65000);
-      UPDATE account
-      SET balance=10000
-     WHERE accno=1111;
+insert into account values(1111,'Vijaynagar',65000);
+UPDATE account
+SET balance=10000
+WHERE accno=1111;
      
-      insert into account values(2222,'Hanumanthnagar',20000);
-       insert into account values(3333,'indiranagar',45000);
-        insert into account values(4444,'Kormangala',55000);
-         insert into account values(5555,'chandra layout',65000);
+insert into account values(2222,'Hanumanthnagar',20000);
+insert into account values(3333,'indiranagar',45000);
+insert into account values(4444,'Kormangala',55000);
+insert into account values(5555,'chandra layout',65000);
          
-          insert into customer values('Pooja','M.G Road','Bangalore');
-           insert into customer values('Niha','Richmond road','Bangalore');
-            insert into customer values('Anusree','C.V Raman road','Bangalore');
-             insert into customer values('Shikha','Kuvempu road','Bangalore');
-              insert into customer values('Diviyakriti','Mall road','Bangalore');
+insert into customer values('Shashank','M.G Road','Bangalore');
+insert into customer values('John','Richmond road','Bangalore');
+insert into customer values('Snow','C.V Raman road','Bangalore');
+insert into customer values('Smith','Kuvempu road','Bangalore');
+insert into customer values('Himmler','Mall road','Bangalore');
               
-              insert into depositer values('Pooja',1111);
-                insert into depositer values('Niha',2222);
-                  insert into depositer values('Anusree',3333);
-                    insert into depositer values('Shikha',4444);
-                      insert into depositer values('Divyakriti',5555);
+insert into depositer values('Shashank',1111);
+insert into depositer values('John',2222);
+insert into depositer values('Snow',3333);
+insert into depositer values('Smith',4444);
+insert into depositer values('Himmler',5555);
